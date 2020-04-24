@@ -1,1 +1,27 @@
-<!-- start-->
+<html>
+    <% include header %> 
+    <h1>compose module</h1>
+    <form class="" action="/compose" method="post">
+        <div class="form-group">      
+            <label for="title">Title</label>
+            <input class="form-control" name="title"></input>
+            <label for="postBody">Post</label>
+            <textarea class="form-control" name="postBody"></textarea>            
+        </div>
+        <button onclick="logData()" class="btn btn-primary">publish</button>     
+    </form>
+    <% include footer %> 
+</html>
+
+<script>
+
+    function logData(){
+        console.log('ciao');
+        let titleValue=document.querySelector('input[name=title]').value;
+        let bodyValue=document.querySelector('textarea[name=postBody]').value;
+        console.log(titleValue);
+        console.log(bodyValue);
+        
+    }
+        
+</script>

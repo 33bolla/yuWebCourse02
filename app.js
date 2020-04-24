@@ -33,8 +33,30 @@ app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 
 });
+app.get("/compose", function(req, res){
+  // res.sendFile(__dirname+"/home.ejs"); you are using ejs!!!
+  //res.render("compose", {contactContent: contactContent});
+  res.render("compose", {});
 
+});
 
+app.post("/compose", function(req, res){
+  // res.sendFile(__dirname+"/home.ejs"); you are using ejs!!!
+  //res.render("compose", {contactContent: contactContent});
+  console.log("ciao");
+  rTitle=req.body.title;
+  rBody=req.body.postBody;
+  console.log(rTitle);
+  console.log(rBody);
+  let reqObj={
+    title:rTitle,
+    body:rBody
+  };
+  console.log(reqObj);
+  
+  //res.render("compose", {});
+
+});
 
 
 
