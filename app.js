@@ -17,9 +17,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
+var posts=[];
+
 app.get("/", function(req, res){
   // res.sendFile(__dirname+"/home.ejs"); you are using ejs!!!
-  res.render("home", {startingContent: homeStartingContent});
+  // passing data to ejs script
+  res.render("home", {
+    startingContent: homeStartingContent,
+    posts:posts, 
+    postLen:postLen
+  },);
+  
+  
+  //console.log(posts);
 
 });
 
@@ -37,22 +47,28 @@ app.get("/compose", function(req, res){
   // res.sendFile(__dirname+"/home.ejs"); you are using ejs!!!
   //res.render("compose", {contactContent: contactContent});
   res.render("compose", {});
-
 });
 
 app.post("/compose", function(req, res){
   // res.sendFile(__dirname+"/home.ejs"); you are using ejs!!!
   //res.render("compose", {contactContent: contactContent});
-  console.log("ciao");
-  rTitle=req.body.title;
-  rBody=req.body.postBody;
-  console.log(rTitle);
-  console.log(rBody);
-  let reqObj={
-    title:rTitle,
-    body:rBody
+  //console.log("ciao");
+  //GET DATA 
+  pTitle=req.body.title;
+  pBody=req.body.postBody;
+  //LOCAL TEST
+  //console.log(pTitle);
+  //console.log(pBody);
+  
+  //CHALLENGE
+  let post={
+    title:pTitle,
+    body:pBody
   };
-  console.log(reqObj);
+  console.log(post);
+  posts.push(post);
+  postLen=posts.length;
+  res.redirect('/');// you pass inner variable too...
   
   //res.render("compose", {});
 

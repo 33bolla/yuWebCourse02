@@ -3,5 +3,34 @@
     <% include header %> 
     <h1>you in Home</h1>
     <p> <%= startingContent %> </p>
+   
+    <%  console.log(posts); 
+        
+    //is it a full js script? almost it is!
+        /*
+        let postLen=posts.length;
+        for (let i=0; i<postLen; i++){
+            console.log(posts[i]["title"]);
+        }
+        console.log (postLen);
+        */
+        //console.log(posts[0]["title"])
+        
+        var j=0;
+        //a bit tricky for use of delimiter ejs tag...; last in first out!
+        posts.reverse();//inverting elements order
+        posts.forEach (function (post){ 
+            console.log(post["title"]);
+            j++;
+            console.log(j); //NOT PASSING THIS!  
+            //partial end of script as in js/php +html!!!
+            %> 
+            <h1><%=post.title%></h1>
+            <p><%=post.body%></p>
+    <% }) %>
+
+    <!-- <p><b> <%= posts[postLen-1]["title"] %></b></p>
+    <p> <%= posts[postLen-1]["body"] %></p> -->
     <% include footer %> 
+     
 </html>
